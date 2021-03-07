@@ -32,8 +32,8 @@ pipeline {
     }
     stage('Deploy image and Remove Unused  image') {
       steps{
-       // sh "docker stop jzDevOpsProj10"
-      //  sh "docker rm jzDevOpsProj10"
+        sh "docker stop jzDevOpsProj10"
+        sh "docker rm jzDevOpsProj10"
         sh "docker run -d -p 8010:80 --name jzDevOpsProj10 $imagename:$BUILD_NUMBER"
         sh "docker rmi $imagename:$BUILD_NUMBER"
 
