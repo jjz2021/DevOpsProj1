@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Cloning Git') {
       steps {
-        git([url: 'git@github.com:jjz2021/DevOpsProj1.git', branch: 'master', credentialsId: 'GitHubCredentials'])
+        git([url: 'git@github.com:jjz2021/DevOpsProj1.git', branch: 'master', credentialsId: 'gitHub-SSH'])
 
       }
     }
@@ -34,7 +34,7 @@ pipeline {
       steps{
         sh "docker stop jzDevOpsProj1"
         sh "docker rm jzDevOpsProj1"
-        sh "docker run -d -p 8011:80 --name jzDevOpsProj1 $imagename:$BUILD_NUMBER"
+        sh "docker run -d -p 8010:80 --name jzDevOpsProj1 $imagename:$BUILD_NUMBER"
         sh "docker rmi $imagename:$BUILD_NUMBER"
 
       }
